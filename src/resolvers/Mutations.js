@@ -55,7 +55,7 @@ export default {
       throw new Error("Unauthenticated user");
     }
     console.log("follow user mutation");
-    const follow_response=await addFollower(context,args);
+    const follow_response = await addFollower(context, args);
     return follow_response;
   },
   async unfollowUser(parent, args, context, info) {
@@ -64,8 +64,7 @@ export default {
       console.log("Unauthenticated user");
       throw new Error("Unauthenticated user");
     }
-    const unfollow_response = await removeFollower(context,args)
+    const unfollow_response = await removeFollower(context, args);
     return unfollow_response;
-
   },
 };

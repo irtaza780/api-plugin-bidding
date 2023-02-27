@@ -24,19 +24,19 @@ export default {
     subscribe: function subscribe(parent, args, context, info) {
       console.log("startCoinToss sibscribe");
       let { bidId } = args;
-
       let { pubSub } = context;
 
       return pubSub.asyncIterator(`StartGame ${bidId}`);
     },
   },
-  
+
   notifications: {
     subscribe: function subscribe(parent, args, context, info) {
       console.log("notifications sibscribe");
       let { userId } = args;
-
       let { pubSub } = context;
+      console.log("pubsub is ");
+      console.log(pubSub);
 
       return pubSub.asyncIterator(`notifications-${userId}`);
     },

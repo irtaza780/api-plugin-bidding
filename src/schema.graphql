@@ -1,9 +1,9 @@
 type Bid implements Node {
   _id: ID!
   productId: ID!
-  productSlug:String!
-  reactionVariantId:ID!
-  reactionProductId:ID!
+  productSlug: String!
+  reactionVariantId: ID!
+  reactionProductId: ID!
   product: ProductVariant
   updatedAt: DateTime
   createdAt: DateTime
@@ -23,9 +23,11 @@ type Bid implements Node {
   createdBy: ID
   wonBy: ID
   lostBy: ID
-  createdByinfo: createdByUserinfo
+  createdByinfo: Account
   soldBy: ID
-  soldByInfo: createdByUserinfo
+  soldByInfo: Account
+  biddingArea: Float
+  pricePerUnit: Float
 }
 type Offer implements Node {
   _id: ID!
@@ -33,11 +35,11 @@ type Offer implements Node {
   text: String
   updatedAt: DateTime
   createdAt: DateTime
-  sender: createdByUserinfo
+  sender: Account
   createdBy: ID
   type: offerTypes
   status: String
-  reciever: createdByUserinfo
+  reciever: Account
   createdFor: ID
   canAccept: ID
 }
@@ -57,7 +59,7 @@ type Notification {
   timeSent: DateTime
   to: ID!
   from: ID
-  sender: createdByUserinfo
+  sender: Account
   type: notificationTypes
   url: String
 }
@@ -91,8 +93,8 @@ extend type Subscription {
 type coinTossSubscriptionPayload {
   result: String
   wonBy: ID
-  wonByInfo: createdByUserinfo
-  lostByInfo: createdByUserinfo
+  wonByInfo: Account
+  lostByInfo: Account
   lostBy: ID
   data: String
   head: ID
@@ -144,14 +146,13 @@ type placeBidPayLoad {
 input placeBidInput {
   shopId: ID!
   productId: ID!
-  variantId: ID!
   soldby: ID!
   offer: offerInput!
-  offerType: offerTypes!
   productPrice: MoneyInput!
 }
 input offerInput {
   amount: MoneyInput!
+  area: Float
   text: String
   status: String
 }
@@ -178,7 +179,7 @@ extend type Mutation {
 }
 extend type Query {
   getUserByuserName(userName: String!): userProfile
-  isAvailable(userName:String!):Boolean
+  isAvailable(userName: String!): Boolean
 }
 type followUserInfo {
   image: String
@@ -198,7 +199,7 @@ type profileObj {
   username: String
 }
 extend type ProductVariant {
-slug:String
+  slug: String
 }
 type userProfile {
   name: String

@@ -29,14 +29,14 @@ export default async function placeBidOnProduct(context, args) {
   } = args;
   let accountId = context.userId;
   let decodeProductId = decodeOpaqueId(productId).id;
-  let decodeVariantId = decodeOpaqueId(variantId).id;
+  // let decodeVariantId = decodeOpaqueId(variantId).id;
   let decodeShopId = decodeOpaqueId(shopId).id;
   if (decodeProductId == productId || productId.length == 0) {
     throw new Error("ProductId must be a Reaction ID");
   }
-  if (decodeVariantId == variantId || variantId.length == 0) {
-    throw new Error("variantId must be a Reaction ID");
-  }
+  // if (decodeVariantId == variantId || variantId.length == 0) {
+  //   throw new Error("variantId must be a Reaction ID");
+  // }
   if (decodeShopId == shopId || shopId.length == 0) {
     throw new Error("shopId must be a Reaction ID");
   }
@@ -70,7 +70,6 @@ export default async function placeBidOnProduct(context, args) {
     _id: new_id,
     productSlug: product && product.product ? product.product.slug : null,
     productId: decodeProductId,
-    variantId: decodeVariantId,
     reactionVariantId: variantId,
     reactionProductId: productId,
     shopId: decodeShopId,
@@ -111,16 +110,16 @@ export default async function placeBidOnProduct(context, args) {
       console.log("contactExists", contactExists);
     }
     console.log("product for bid", product);
-    createNotification(context, {
-      details: null,
-      from: accountId,
-      hasDetails: false,
-      message: `Placed a bid of ${offer.amount.amount} on ${product.product.title}`,
-      status: "unread",
-      to: soldby,
-      type: "bid",
-      url: `/en/chat?bidId=${BidsAdded.insertedId}`,
-    });
+    // createNotification(context, {
+    //   details: null,
+    //   from: accountId,
+    //   hasDetails: false,
+    //   message: `Placed a bid of ${offer.amount.amount} on ${product.product.title}`,
+    //   status: "unread",
+    //   to: soldby,
+    //   type: "bid",
+    //   url: `/en/chat?bidId=${BidsAdded.insertedId}`,
+    // });
     return BidsAdded.insertedId;
     // return Bids.findOne({"_id":BidsAdded.insertedId});
   } else {
