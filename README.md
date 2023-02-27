@@ -1,4 +1,4 @@
-# api-plugin-example
+# partown/api-plugin-bidding
 
 [![npm (scoped)](https://img.shields.io/npm/v/@reactioncommerce/api-plugin-example.svg)](https://www.npmjs.com/package/@reactioncommerce/api-plugin-example)
 [![CircleCI](https://circleci.com/gh/reactioncommerce/api-plugin-example.svg?style=svg)](https://circleci.com/gh/reactioncommerce/api-plugin-example)
@@ -78,4 +78,4 @@ If you forget to sign your commits, the DCO bot will remind you and give you det
    See the License for the specific language governing permissions and
    limitations under the License.
 
-# api-plugin-images3
+# partown/api-plugin-bidding
